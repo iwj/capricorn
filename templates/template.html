@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <p><a href="http://www.tornadoweb.org/">Tornado</a> 是 <a href="http://friendfeed.com/">FriendFeed</a> 使用的可扩展的非阻塞式 web 服务器及其相关工具的开源版本。这个 Web 框架看起来有些像 <a href="http://webpy.org/">web.py</a> 或者 <a href="http://code.google.com/appengine/docs/python/tools/webapp/">Google 的 webapp</a>，不过为了能有效利用非阻塞式服务器环境，这个 Web 框架还包含了一些相关的有用工具
+和优化。</p>
+  <p>Tornado 和现在的主流 Web 服务器框架（包括大多数
+Python 的框架）有着明显的区别：它是非阻塞式服务器，而且速度相当快。得利于其
+非阻塞的方式和对 <a href="http://www.kernel.org/doc/man-pages/online/pages/man4/epoll.4.html">epoll</a> 的运用，Tornado 每秒可以处理数以千计的连接，这意味着对于实时 Web 服务来说，Tornado 是一个理想的 Web 框架。我们开发这个 Web 服务器的主要目的就是为了处理 FriendFeed 的实时功能
+——在 FriendFeed 的应用里每一个活动用户都会保持着一个服务器连接。（关于如何扩容
+服务器，以处理数以千计的客户端的连接的问题，请参阅 <a href="http://www.kegel.com/c10k.html">C10K problem</a>。）</p>
+  <p>请参见 <a href="/documentation">Tornado 文档</a> 或 <a href="http://en.tornadoweb.cn/">Tornado 原文文档(镜像)</a>以详细了解该  Web 框架。</p>
+
+  <h2>下载和安装</h2>
+  <p><b>自动安装：</b> Tornado 已经列入 <a href="http://pypi.python.org/pypi/tornado">PyPI</a> ，因此可以通过 <code>pip</code> 或者 <code>easy_install</code> 来安装。如果你没有安装 libcurl  的话，你需要将其单独安装到系统中。请参见下面的安装依赖一节。注意一点，使用  <code>pip</code> 或  <code>easy_install</code> 安装的 Tornado 并没有包含源代码中的 demo 程序。</p>
+
+  <p><b>手动安装：</b> 下载 <a href="http://github.com/downloads/facebook/tornado/tornado-1.2.1.tar.gz">tornado-1.2.1.tar.gz</a></p>
+  <pre><code>tar xvzf tornado-1.2.1.tar.gz
+cd tornado-1.2.1
+python setup.py build
+sudo python setup.py install</code></pre>
+  <p>Tornado 的代码托管在 <a href="http://github.com/facebook/tornado">GitHub</a> 上面。对于 Python 2.6 以上的版本，因为标准库中已经包括了对 <code>epoll</code> 的支持，所以你可以不用 <code>setup.py</code> 编译安装，只要简单地将 tornado 的目录添加到 <code>PYTHONPATH</code> 就可以使用了。
+
+  <h3>安装需求</h3>
+  <p>Tornado 在 Python 2.5, 2.6, 2.7 中都经过了测试。要使用 Tornado 的所有功能，你需要安装 <a href="http://pycurl.sourceforge.net/">PycURL</a> (7.18.2 或更高版本) 以及 <a href="http://pypi.python.org/pypi/simplejson/">simplejson</a> (仅适用于Python 2.5，2.6 以后的版本标准库当中已经包含了对 JSON 的支持)。为方便起见，下面将列出 Mac OS X 和 Ubuntu 中的完整安装方式：
+
+  <p style="font-weight:bold">Mac OS X 10.6 (Python 2.6+)</p>
+  <pre><code>sudo easy_install setuptools pycurl</code></pre>
+
+  <p style="font-weight:bold">Ubuntu Linux (Python 2.6+)</p>
+  <pre><code>sudo apt-get install python-pycurl</code></pre>
+
+  <p style="font-weight:bold">Ubuntu Linux (Python 2.5)</p>
+  <pre><code>sudo apt-get install python-dev python-pycurl python-simplejson</code></pre>
+
+  <h2>Hello, world</h2>
+  <p>以下是经典的 &quot;Hello, world&quot; 示例：</p>
+  <pre><code>import tornado.ioloop
+import tornado.web
+
+class MainHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write("Hello, world")
+
+application = tornado.web.Application([
+    (r"/", MainHandler),
+])
+
+if __name__ == "__main__":
+    application.listen(8888)
+    tornado.ioloop.IOLoop.instance().start()</code></pre>
+  <p>请参见 <a href="/documentation">Tornado 文档</a> 以详细了解该 Web 框架。</p>
+
+  <h2>讨论和支持</h2>
+  <p>你可以在 <a href="http://groups.google.com/group/python-tornado">Tornado 开发者邮件列表</a>中讨论和提交 bug。你还可以可以在 <a href="http://github.com/facebook/tornado/wiki/Links">Tornado wiki</a> 里面找到更多的资源。</p>
+
+{% end %}

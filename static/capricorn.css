@@ -1,0 +1,16 @@
+.head-panel{
+    height: 256px;
+    background-color: #03a9f4;
+}
+
+.head-title{
+  padding-top: 150px;
+  color: #FFFFFF;
+  font-size: 300%;
+}
+
+.search-panel{
+  height: 64px;
+  background-color: #f9f9f9;
+  margin-bottom: 49px;
+}
