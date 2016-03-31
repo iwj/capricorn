@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+  <div class="container">
+    <p> {{ info }} </p>
+    <h2>稿子编辑</h2>
+    <form action="/upload" method="post">
+      <p>标题</p>
+      <p>
+      <input type="text" name="title" placeholder="请输入标题" value={{ draft_title }}></input>
+      </p>
+      <p>内容</p>
+      <p>
+      <input type="text" name="main_text" placeholder="正文内容" value={{ draft_text }}></input>
+      </p>
+      <input type="submit" value="投稿"/>
+    </from>
+  </div>
+
+{% end %}

@@ -4,13 +4,33 @@
 }
 
 .head-title{
-  padding-top: 150px;
+  padding-top: 120px;
   color: #FFFFFF;
-  font-size: 300%;
+  font-size: 400%;
 }
 
 .search-panel{
   height: 64px;
   background-color: #f9f9f9;
   margin-bottom: 49px;
+}
+
+.img-panel{
+  width: 100%;
+  height: 390px;
+  overflow: hidden;
+}
+
+.img-show{
+  width: 100%;
+  background-size: cover;
+}
+
+.show-frame{
+  margin-bottom: 49px;
+}
+
+.footer{
+  height: 144px;
+  background-color: #f9f9f9;
 }

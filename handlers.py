@@ -14,3 +14,7 @@ HANDLERS = [(r"/", IndexHandler), (r"/info", InfoHandler)]
 HANDLERS += [(r"/login", LoginHandler)]
 
 HANDLERS += [(r"/list", ListHandler)]
+
+HANDLERS += [(r"/edit", EditHandler)]
+
+HANDLERS += [(r"/upload", UploadHandler)]
