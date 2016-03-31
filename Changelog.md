@@ -24,3 +24,11 @@
   * 完成页面页面框架
 
   * 完成后端基础框架
+
+2016-03-31 Jian Woo <jentlewoo@gmail.com>
+
+  # version 0.2.1
+
+  * 添加edit页面
+
+  * 优化base.html以及其它页面相关细节
