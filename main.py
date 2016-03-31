@@ -14,21 +14,17 @@ from tornado.options import define, options
 import torndb
 from handlers import HANDLERS
 
-#from tornado.options import define, options
-#define("port", default=8000, help="run port", type=int)
 define("mysql_host", default="127.0.0.1:3306")
 define("mysql_database", default="test")
 define("mysql_user", default="root")
 define("mysql_password", default="")
-
-#################################################
 
 if __name__ == "__main__":
     tornado.options.parse_command_line()
     app = tornado.web.Application(
             handlers = HANDLERS,
             template_path = os.path.join(os.path.dirname(__file__),"templates"),
-            static_path = os.path.join(os.path.dirname(__file__),"static")
+            static_path = os.path.join(os.path.dirname(__file__),"static"),
             )
     app.db = torndb.Connection(
             host = options.mysql_host, database = options.mysql_database,

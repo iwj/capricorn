@@ -7,7 +7,6 @@
 
 import tornado.web
 
-
 class BaseHandler(tornado.web.RequestHandler):
     @property
     def db(self):
@@ -32,7 +31,29 @@ class ListHandler(BaseHandler):
     def get(self):
         ret = self.db.query("select * from user")
         self.render("list.html",arg = ret, title="all user")
-    """
-for article in db.query("SELECT * FROM articles"):
-        print article.title
-    """
+
+class EditHandler(BaseHandler):
+    def get(self):
+        self.render(
+                "edit.html", 
+                info="文字尽可能通俗易懂 ;)", 
+                draft_title="",
+                draft_text=""
+                )
+
+class UploadHandler(BaseHandler):
+    def post(self):
+        get_title = self.get_argument("title")
+        get_text = self.get_argument("main_text")
+        if(get_title == "" or get_text == ""):
+            self.render("edit.html", 
+                    info="标题和内容都为必填项",
+                    draft_title = get_title,
+                    draft_text = get_text
+                    )
+        else:
+            self.render("edit.html", 
+                    info="两种内容都已提交",
+                    draft_title = get_title,
+                    draft_text = get_text
+                    )
