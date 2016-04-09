@@ -18,3 +18,5 @@ HANDLERS += [(r"/list", ListHandler)]
 HANDLERS += [(r"/edit", EditHandler)]
 
 HANDLERS += [(r"/upload", UploadHandler)]
+
+HANDLERS += [(r"/read", ReadHandler)]
