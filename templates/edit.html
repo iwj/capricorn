@@ -2,20 +2,32 @@
 
 {% block body %}
 
-  <div class="container">
+<div class="container">
     <p> {{ info }} </p>
     <h2>稿子编辑</h2>
     <form action="/upload" method="post">
-      <p>标题</p>
-      <p>
-      <input type="text" name="title" placeholder="请输入标题" value={{ draft_title }}></input>
-      </p>
-      <p>内容</p>
-      <p>
-      <input type="text" name="main_text" placeholder="正文内容" value={{ draft_text }}></input>
-      </p>
-      <input type="submit" value="投稿"/>
-    </from>
-  </div>
+
+      <div class="form-group">
+        标题
+      <input type="text" class="form-control" name="edit_title" placeholder="请输入标题" required value= {{ draft_title }} ></input>
+    </div>
+      <div class="form-group">
+        内容
+        <textarea type="text" class="form-control" name="edit_text" placeholder="正文内容" required rows="30" style="resize: none;">{{ draft_text }}</textarea>
+      </div>
+      <div class="form-group">
+        TODO 类目
+        <select class="form-control">
+          <option value="">类目1</option>
+          <option value="">类目2</option>
+        </select>
+      </div>
+      <div class="form-group">
+        Invite Code邀请码：
+        <input type="text" class="form-control" name="invite_code" placeholder="邀请码"></input>
+      </div>
+      <input type="submit" class="btn btn-default" value="投稿"/>
+    </form>
+</div>
 
 {% end %}
