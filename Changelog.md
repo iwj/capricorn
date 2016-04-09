@@ -32,3 +32,13 @@
   * 添加edit页面
 
   * 优化base.html以及其它页面相关细节
+
+2016-04-09 Jian Woo <jentlewoo@gmail.com>
+
+  # version 0.2.2
+
+  * 增加edit页面功能
+
+  * 添加read页面demo
+
+  * 建立article表并测试网页断存储数据通过
