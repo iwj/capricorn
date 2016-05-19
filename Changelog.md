@@ -42,3 +42,11 @@
   * 添加read页面demo
 
   * 建立article表并测试网页断存储数据通过
+ 
+2016-05-19 Jian Woo <jentlewoo@gmail.com>
+
+  # version 0.2.3
+
+  * 使用 Material Design Lite 框架
+
+  * 使用 wangEditor 编辑器

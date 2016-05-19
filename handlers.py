@@ -9,14 +9,8 @@ from views import *
 
 #就是一些路径映射配置
 
-HANDLERS = [(r"/", IndexHandler), (r"/info", InfoHandler)]
-
-HANDLERS += [(r"/login", LoginHandler)]
-
-HANDLERS += [(r"/list", ListHandler)]
-
-HANDLERS += [(r"/edit", EditHandler)]
-
-HANDLERS += [(r"/upload", UploadHandler)]
-
-HANDLERS += [(r"/read", ReadHandler)]
+HANDLERS = [(r"/", IndexHandler), (r"/info", InfoHandler), 
+        (r"/login", LoginHandler), (r"/list", ListHandler), 
+        (r"/edit", EditHandler), (r"/upload", UploadHandler), 
+        (r"/read", ReadHandler), (r"/help", HelpHandler),
+        ]

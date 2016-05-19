@@ -18,7 +18,9 @@ class LoginHandler(BaseHandler):
 
 class IndexHandler(BaseHandler):
     def get(self):
-        self.render("index.html", title="Tornado Application")
+        sql = "select * from article order by id desc limit 5;"
+        ret = self.db.query(sql)
+        self.render("index.html", article=ret)
 
 class InfoHandler(BaseHandler):
     def post(self):
@@ -35,10 +37,10 @@ class ListHandler(BaseHandler):
 class EditHandler(BaseHandler):
     def get(self):
         self.render(
-                "edit.html", 
-                info="文字尽可能通俗易懂 ;)", 
+                "edit.html",
+                info="文字尽可能通俗易懂 ;)",
                 draft_title="",
-                draft_text=""
+                draft_text="",
                 )
 
 class UploadHandler(BaseHandler):
@@ -50,7 +52,7 @@ class UploadHandler(BaseHandler):
             get_code = self.get_argument("invite_code")
             if(get_code == "CA45TZ"):
                 if(get_title == "" or get_text == ""):
-                    self.render("edit.html", 
+                    self.render("edit.html",
                         info="邀请码正确，标题和内容都为必填项",
                         draft_title = get_title,
                         draft_text = get_text
@@ -58,9 +60,9 @@ class UploadHandler(BaseHandler):
                 else:
                     #self.db.execute()
                     sql = "insert into article(title, text, author, tag) values(%s, %s, %s, %s)"
-                    self.db.execute(sql, get_title, get_text, "admin", "['test', '测试']")
-                    self.render("edit.html", 
-                        info="邀请码正确,两种内容都已提交",
+                    self.db.execute(sql, get_title, get_text, "wujian", "['测试']")
+                    self.render("edit.html",
+                        info="邀请码正确，两种内容都已提交",
                         draft_title = get_title,
                         draft_text = get_text
                         )
@@ -75,12 +77,25 @@ class UploadHandler(BaseHandler):
             print ValueError
 
 class ReadHandler(BaseHandler):
-    def get(self):
-        sql = "select * from article where id=%s"
-        ret = self.db.query(sql,4)
+    def get(self,):
+        id = self.get_argument("id", 4)
+        sql = "select * from article where id="+str(id)
+        ret = self.db.query(sql)
+        if(ret):
+            ret_title = ret[0]["title"]
+            ret_text = ret[0]["text"]
+            ret_time = ret[0]["posttime"]
+        else:
+            ret_title = "Not Found"
+            ret_text = "Oops"
+            ret_time = ":("
         self.render(
                 "read.html",
-                title = "titile test",
-                text = ret[0]["text"],
-                time = ret[0]["posttime"]
+                title = ret_title,
+                time = ret_time,
+                text = ret_text,
                 )
+
+class HelpHandler(BaseHandler):
+    def get(self,):
+        self.render("help.html")

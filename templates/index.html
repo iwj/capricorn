@@ -2,64 +2,30 @@
 
 {% block body %}
 
-<div class="search-panel">
-    <div class="container">
-    <!-- 搜索 -->
+    <div class="mdl-cell mdl-cell--12-col">
+      <h2>最新文章</h2>
     </div>
-</div>
-
-<div class="container">
-    <h2>类目导航</h2>
-    <ul>
-        <li><a href="/edit">编辑edit</a></li>
-        <li><a href="/read">阅读read</a></li>
-        <li><a>标题我可以吞下玻璃而不伤身体</a></li>
-        <li><a>标题我可以吞下玻璃而不伤身体</a></li>
-        <li><a>标题我可以吞下玻璃而不伤身体</a></li>
-  </ul>
-  <hr>
-  <h2>编辑精选</h2>
-<div class="row">
-    <div class="col-md-4 show-frame">
-        <div class="img-panel">
-            <img src="/static/1858889659.jpg" alt="..." class="img-rounded img-show">
+    {% for i in range(5) %}
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet">
+      <div class="mdl-card mdl-shadow--3dp show-card">
+        <div class="mdl-card__title" style="color: #fff;
+        height: 206px;
+        background: url('../static/aijiang.jpg') center / cover;">
+          <h2 class="mdl-card__title-text">
+            {{ article[i]["title"] }}
+          </h2>
         </div>
-    <h3>Icon Font</h3>
-    <p>The best way to use these icons on the web is with our icon web font.
-      It's lightweight, easy to use, and hosted by Google Web Fonts.
-      Learn how to use font-based icons in our</p>
-      <a>阅读全文</a>
-  </div>
-  <div class="col-md-4">
-    <div class="img-panel">
-      <img src="/static/1858889659.jpg" alt="..." class="img-rounded img-show">
+        <div class="mdl-card__supporting-text">
+          {{ article[i]["tag"] }}{{ article[i]["author"] }}
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/read?id={{ article[i]["id"] }}">
+            阅读全文
+          </a>
+        </div>
+      </div>
     </div>
-    <h3>Icon Font</h3>
-    <p>The best way to use these icons on the web is with our icon web font.
-      It's lightweight, easy to use, and hosted by Google Web Fonts.
-      Learn how to use font-based icons in our</p>
-      <a>阅读全文</a>
-  </div>
-  <div class="col-md-4">
-    <div class="img-panel">
-      <img src="/static/1858889659.jpg" alt="..." class="img-rounded img-show">
-    </div>
-    <h3>Icon Font</h3>
-    <p>The best way to use these icons on the web is with our icon web font.
-      It's lightweight, easy to use, and hosted by Google Web Fonts.
-      Learn how to use font-based icons in our</p>
-      <a>阅读全文</a>
-  </div>
-</div>
-<hr>
-<h2>最新文章</h2>
-<ul>
-  <li><a>标题我可以吞下玻璃而不伤身体</a></li>
-  <li><a>标题我可以吞下玻璃而不伤身体</a></li>
-  <li><a>标题我可以吞下玻璃而不伤身体</a></li>
-  <li><a>标题我可以吞下玻璃而不伤身体</a></li>
-  <li><a>标题我可以吞下玻璃而不伤身体</a></li>
-</ul>
+    {% end for%}
 
-</div>
+
 {% end %}

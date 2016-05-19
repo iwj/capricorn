@@ -23,8 +23,10 @@ mysql -u root (root 默认没有密码)
 ==>
 以上是视频里的路径，本机的路径为usr/local/mysql／opt/bin
 视频里直接在bin路径下就可以启动 mysql
-而自己却报错：Cant connect to local MySQL server through socket '/var/mysql/mysql.sock' (2)
-很奇怪。唯一不同的是，视频里在官网下载tar压缩包解压的，自己是用brew工具安装的，不知道是不是这个原因。
+而自己却报错：
+Cant connect to local MySQL server through socket '/var/mysql/mysql.sock' (2)
+很奇怪。
+唯一不同的是，视频里在官网下载tar压缩包解压的，自己是用brew工具安装的，不知道是不是这个原因。
 
 ## 理解&总结
 
@@ -37,11 +39,13 @@ mysql -u root (root 默认没有密码)
 
 尝试在项目中使用MySQL
 
-使用homebrew顺利安装。但是在启动MySQL服务时遇到问题，使用mysql －u命令尝试登录时一直提示找不到sock
+使用homebrew顺利安装。但是在启动MySQL服务时遇到问题，
+使用mysql －u命令尝试登录时一直提示找不到sock
 而对mysql不了解的我，完全不知道这是怎么一回事。
 在网上查了一番，seagmentfault上一个问答里，发现使用brew命令也可以启动mysql，也下载了XAMPP。
 
-第二天，开电脑后发现，使用mysql －u 命令可以正常登录。真是奇怪。不知道是重启了才使其服务运行起来，还是XAMPP带来的效果。
+第二天，开电脑后发现，使用mysql －u 命令可以正常登录。真是奇怪。
+不知道是重启了才使其服务运行起来，还是XAMPP带来的效果。
 
 ## MySQL:2016-2-18
 
@@ -85,7 +89,9 @@ Query OK, 0 rows affected (0.33 sec)
 
 sudo pip install torndb 之后
 在ipython里测试 import torndb 报错，No module named MySQLdb
-Google之后在stackoverflow查到：sudo pip install mysql-python 之后再去ipython测试，正常。
+Google之后在stackoverflow查到：
+sudo pip install mysql-python
+之后再去ipython测试，正常。
 
 ## MySQL: 2016-4-2
 
@@ -103,7 +109,9 @@ author  varchar(10) NOT NULL    -
 tag     varchar(30) NOT NULL
 
 实际操作：
-mysql> create table article( id INT not NULL auto_increment, title varchar(20) NOT NULL, text TEXT NOT NULL, date DATE NOT NULL, time TIME NOT NULL, author varchar(10) NOT NULL, tag varchar(30) NOT NULL,PRIMARY KEY (id));
+mysql> create table article( id INT not NULL auto_increment, title varchar(20)
+NOT NULL, text TEXT NOT NULL, date DATE NOT NULL, time TIME NOT NULL,
+author varchar(10) NOT NULL, tag varchar(30) NOT NULL,PRIMARY KEY (id));
 Query OK, 0 rows affected (0.19 sec)
 
 描述：
@@ -120,3 +128,9 @@ mysql> desc article;
 | tag    | varchar(30) | NO   |     | NULL    |                |
 +--------+-------------+------+-----+---------+----------------+
 7 rows in set (0.00 sec)
+
+## Front-End:2016-4-13
+
+textarea的内容存入数据库再取出来，回车就消失了。
+解决方案：
+wangEditor＋直接存HTML代码段
