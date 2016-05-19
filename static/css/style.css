@@ -1,0 +1,22 @@
+/*all*/
+.capricorn-max-width{
+  max-width: 800px;
+}
+
+.capricorn-min-height{
+  min-height: 500px;
+}
+
+body > font-size{
+  200%;
+}
+
+/*index*/
+.show-card{
+  width: 100%;
+}
+
+/*edit*/
+.edit-input{
+  width: 100%;
+}

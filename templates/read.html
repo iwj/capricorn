@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="../static/editor/css/wangEditor.min.css">
+{% end %}
+
 {% block body %}
 
-<div class="container">
-    <h1>{{ title }}</h1>
-    <h2>{{ time }}</h2>
-    <p>{{ text }}</p>
-</div>
+  <div class="mdl-cell mdl-cell--12-col">
+    <h2>{{ title }}</h2>
+    <h4>{{ time }}</h4>
+    <div>{% raw text %}</div>
+  </div>
+
 
 {% end %}

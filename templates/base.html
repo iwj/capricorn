@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>{% block title %}Capricorn{% end %}</title>
-    <link rel="stylesheet" href="/static/capricorn.css">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    {% block head %}{% end %}
-
-  </head>
-  <body>
-    <div class="head-panel">
-      <div class="container head-title">
-        <a href="/">Capricorn</a>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../static/css/material.min.css">
+  <link rel="stylesheet" href="../static/css/icons.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <title>{% block title %}扬气吐眉{% end %}</title>
+  {% block head %}{% end %}
+</head>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">扬气吐眉</span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="/">首页</a>
+          <a class="mdl-navigation__link" href="/edit">投稿</a>
+          <a class="mdl-navigation__link" href="/help">帮助</a>
+        </nav>
       </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Capricorn</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/">首页</a>
+        <a class="mdl-navigation__link" href="/edit">投稿</a>
+        <a class="mdl-navigation__link" href="/help">帮助</a>
+      </nav>
     </div>
-
-    {% block body %}{% end %}
-
-    {% block bottom %}{% end %}
-
-    <div class="footer">
-        <div class="container">
-            capricorn
+    <main class="mdl-layout__content">
+      <div class="page-content capricorn-min-height">
+        <span id="contenttop"></span>
+        <div class="mdl-grid capricorn-max-width capricorn-min-height">
+          {% block body %}{% end %}
         </div>
-    </div>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-
-  </body>
+        <footer class="mdl-mini-footer">
+          <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">扬气吐眉</div>
+            <ul class="mdl-mini-footer__link-list">
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Privacy & Terms</a></li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+    </main>
+  </div>
+  <script src="../static/js/material.min.js"></script>
+</body>
 </html>
