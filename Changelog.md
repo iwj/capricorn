@@ -50,3 +50,13 @@
   * 使用 Material Design Lite 框架
 
   * 使用 wangEditor 编辑器
+
+2016-12-06 Jian Woo <jentlewoo@gmail.com>
+
+  # version 0.2.4
+
+  * 增加帐号系统
+
+  * 完善登录流程、登录按钮的显示与隐藏
+
+  * 应用了 Tornado 的各项特性，安全、载入速度等
