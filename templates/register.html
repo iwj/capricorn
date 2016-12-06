@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+  <h2>注册帐号</h2>
+  <div class="register-frame">
+    <form method="post">
+      {% raw xsrf_form_html() %}
+      <p><input type="text" disabled="disabled" name="email" placeholder="邮箱" required></p>
+      <p><input type="passowrd" disabled="disabled" name="passowrd" placeholder="设置密码" required></p>
+    </form>
+    <p>未开放注册。如需注册，请联系管理员微信：wjplay，备注“新用户注册”。</p>
+  </div>
+
+
+{% end %}

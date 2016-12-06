@@ -134,3 +134,65 @@ mysql> desc article;
 textarea的内容存入数据库再取出来，回车就消失了。
 解决方案：
 wangEditor＋直接存HTML代码段
+
+## MySQL:2016-8-10
+
+在新电脑上配置依赖的环境，
+
+安装MySQL时，使用homebrew安装，安装完成后mysql －uroot无法启动
+
+在segmentfault上看到这样的信息：
+
+brew info mysql
+
+在终端输入以上的命令之后，返回的几行信息里有一句熟悉的命令：
+
+brew services start mysql
+
+之后再mysql -uroot 就能进入了。
+
+地址：https://segmentfault.com/q/1010000000094608
+
+目前，仍无法熟悉MySQL安装相关遇到的问题啊，都是遇到问题解决了但无法知其根本原因
+
+## 2016-09-15 update the table: article
+
+mysql> create table article(
+    -> id int not null auto_increment,
+    -> title varchar(20) not null,
+    -> text text not null,
+    -> post_date DATE NOT NULL,
+    -> post_time TIME NOT NULL,
+    -> author varchar(10) NOT NULL,
+    -> tag_main varchar(10) NOT NULL,
+    -> tag_sub varchar(10) NOT NULL,
+    -> PRIMARY KEY (id));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc article;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| title     | varchar(20) | NO   |     | NULL    |                |
+| text      | text        | NO   |     | NULL    |                |
+| post_date | date        | NO   |     | NULL    |                |
+| post_time | time        | NO   |     | NULL    |                |
+| author    | varchar(10) | NO   |     | NULL    |                |
+| tag_main  | varchar(10) | NO   |     | NULL    |                |
+| tag_sub   | varchar(10) | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+8 rows in set (0.01 sec)
+
+因表设计时，没有添加自动插入时间，所以在sql 语句里添加日期时间：
+
+mysql> insert into article(title, text, author, tag_main, tag_sub, post_date, post_time) values("It is a title", "lalala", "WuJian", "微信", "normal", CURRENT_DATE, CURRENT_TIME);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from article;
++----+---------------+--------+------------+-----------+--------+----------+---------+
+| id | title         | text   | post_date  | post_time | author | tag_main | tag_sub |
++----+---------------+--------+------------+-----------+--------+----------+---------+
+|  1 | It is a title | lalala | 2016-09-15 | 16:06:21  | WuJian | 微信     | normal  |
++----+---------------+--------+------------+-----------+--------+----------+---------+
+1 row in set (0.00 sec)

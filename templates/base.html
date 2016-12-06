@@ -3,52 +3,48 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../static/css/material.min.css">
-  <link rel="stylesheet" href="../static/css/icons.css">
-  <link rel="stylesheet" href="../static/css/style.css">
-  <title>{% block title %}扬气吐眉{% end %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="shortcut icon" href="{{ static_url("favicon.png") }}" type="image/png" />
+  <link rel="icon" href="{{ static_url("favicon.png") }}" type="image/png" />
+  <link rel="stylesheet" type="text/css" href="{{ static_url("css/style.css") }}" />
+  <title>{% block title %}淡竹园{% end %}</title>
   {% block head %}{% end %}
 </head>
-<body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title">扬气吐眉</span>
-        <div class="mdl-layout-spacer"></div>
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <a class="mdl-navigation__link" href="/">首页</a>
-          <a class="mdl-navigation__link" href="/edit">投稿</a>
-          <a class="mdl-navigation__link" href="/help">帮助</a>
-        </nav>
+<body id="top">
+  <header>
+    <div class="view">
+      <div class="top-bar">
+        <div class="logo">
+          <a href="/">淡竹园</a>
+        </div>
+        <div class="user-panel">
+          {% if current_user %}
+            {{ current_user }} | <a href="/logout?action=1">退出帐号</a>
+          {% else %}
+            <a href="/login">登录</a> ｜
+            <!-- <a href="/reg">注册</a> -->
+          {% end %}
+        </div>
       </div>
-    </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Capricorn</span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="/">首页</a>
-        <a class="mdl-navigation__link" href="/edit">投稿</a>
-        <a class="mdl-navigation__link" href="/help">帮助</a>
+      <nav class="navigation">
+        <a class="" href="/">首页</a>
+        <a class="" href="#">目录</a>
+        <a class="" href="/edit">投稿</a>
       </nav>
     </div>
-    <main class="mdl-layout__content">
-      <div class="page-content capricorn-min-height">
-        <span id="contenttop"></span>
-        <div class="mdl-grid capricorn-max-width capricorn-min-height">
-          {% block body %}{% end %}
-        </div>
-        <footer class="mdl-mini-footer">
-          <div class="mdl-mini-footer__left-section">
-            <div class="mdl-logo">扬气吐眉</div>
-            <ul class="mdl-mini-footer__link-list">
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Privacy & Terms</a></li>
-            </ul>
-          </div>
-        </footer>
-      </div>
-    </main>
-  </div>
-  <script src="../static/js/material.min.js"></script>
+  </header>
+  <main>
+    <div class="view">
+      {% block body %}{% end %}
+    </div>
+  </main>
+  <footer>
+    <div class="view">
+      <a href="#top">返回顶部</a>
+      <p>
+        淡竹园 DanZhuYuan ♥
+      </p>
+    </div>
+  </footer>
 </body>
 </html>

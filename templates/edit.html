@@ -6,38 +6,24 @@
 
 {% block body %}
 
-    <h2 class="mdl-cell mdl-cell--12-col">稿子编辑</h2>
+    <h1>稿子编辑</h1>
+    <p>{{ info }}</p>
     <form action="/upload" method="post">
-      <div class="mdl-cell mdl-cell--12-col">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label edit-input">
-          <input class="mdl-textfield__input" name="edit_title" type="text" id="title" required>
-          <label class="mdl-textfield__label" for="title">标题</label>
-        </div>
+      <div>
+        <p>
+          <h2>标题</h2>
+          <input name="edit_title" type="text" id="title" required>
+        </p>
         <textarea id="textarea" name="edit_text" style="height:600px;">{{ draft_text }}<p>请输入内容...</p></textarea>
       </div>
-      <div class="mdl-cell mdl-cell--12-col">
-        <p>类目</p>
-        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-          <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
-          <span class="mdl-checkbox__label">默认</span>
-        </label>
-        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
-          <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input" >
-          <span class="mdl-checkbox__label">微信</span>
-        </label>
-        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
-          <input type="checkbox" id="checkbox-3" class="mdl-checkbox__input" >
-          <span class="mdl-checkbox__label">支付宝</span>
-        </label>
+      <div>
+        <p>
+          <h2>邀请码</h2>
+          <input type="text" id="invite_code" name="invite_code" required>
+        </p>
       </div>
       <div class="mdl-cell mdl-cell--12-col">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" id="invite_code" name="invite_code" required>
-          <label class="mdl-textfield__label" for="invite_code">邀请码</label>
-        </div>
-      </div>
-      <div class="mdl-cell mdl-cell--12-col">
-      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+      <button type="submit">
         投稿
       </button>
     </div>

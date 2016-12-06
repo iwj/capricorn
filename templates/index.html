@@ -2,30 +2,34 @@
 
 {% block body %}
 
-    <div class="mdl-cell mdl-cell--12-col">
-      <h2>最新文章</h2>
-    </div>
+  <div class="banner">
+    <img src="{{ static_url("banner1.png") }}">
+  </div>
+
+  <div class="main-content">
     {% for i in range(5) %}
-    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet">
-      <div class="mdl-card mdl-shadow--3dp show-card">
-        <div class="mdl-card__title" style="color: #fff;
-        height: 206px;
-        background: url('../static/aijiang.jpg') center / cover;">
-          <h2 class="mdl-card__title-text">
-            {{ article[i]["title"] }}
-          </h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-          {{ article[i]["tag"] }}{{ article[i]["author"] }}
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/read?id={{ article[i]["id"] }}">
+      <div class="post-card">
+        <h2>{{ article[i]["title"] }}</h2>
+        <small>
+          {{ article[i]["tag_main"] }}{{ article[i]["author"] }}
+        </small>
+        <p>
+          <a href="/read?id={{ article[i]["id"] }}">
             阅读全文
           </a>
-        </div>
+        </p>
       </div>
-    </div>
     {% end for%}
+  </div>
+  <div class="side-content">
+    <div class="side-title">
+      <h2>侧边栏目</h2>
+    </div>
+    <div class="side-card">
+      <h2>热门推荐</h2>
+      <a href="/">淡竹园首页</a>
+    </div>
 
+  </div>
 
 {% end %}
