@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+  <div class="card">
+    <h2>帐号信息</h2>
+    <p>用户名：{{ arg["username"] }}</p>
+    <p>邮箱：{{ arg["email"] }}</p>
+    <p>注册时间：{{ arg["regtime"] }}</p>
+    <p>数字ID：{{ arg["id"] }}</p>
+  </div>
+
+{% end %}

@@ -1,35 +1,12 @@
 {% extends "base.html" %}
 
 {% block body %}
-
-  <div class="banner">
-    <img src="{{ static_url("banner1.png") }}">
-  </div>
-
-  <div class="main-content">
-    {% for i in range(5) %}
-      <div class="post-card">
-        <h2>{{ article[i]["title"] }}</h2>
-        <small>
-          {{ article[i]["tag_main"] }}{{ article[i]["author"] }}
-        </small>
-        <p>
-          <a href="/read?id={{ article[i]["id"] }}">
-            阅读全文
-          </a>
-        </p>
+  最新文章
+    {% for i in range(len(posts)) %}
+      <div class="card">
+        <h3><a href="/read?id={{ posts[i]['id'] }}">{{ posts[i]["title"] }}</a></h3>
+        <div>分类：{{ posts[i]['tag'] }}</div>
       </div>
     {% end for%}
-  </div>
-  <div class="side-content">
-    <div class="side-title">
-      <h2>侧边栏目</h2>
-    </div>
-    <div class="side-card">
-      <h2>热门推荐</h2>
-      <a href="/">淡竹园首页</a>
-    </div>
-
-  </div>
 
 {% end %}

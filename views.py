@@ -8,6 +8,7 @@
 import tornado.web
 import requests
 import json
+import time
 
 class BaseHandler(tornado.web.RequestHandler):
     @property
@@ -22,7 +23,7 @@ class LoginHandler(BaseHandler):
         if not self.current_user:
             self.render("login.html", info="")
         else:
-            self.render("login.html", info="已经登录"+self.current_user)
+            self.redirect("/");
 
     def post(self):
         get_username = self.get_argument("username")
@@ -38,9 +39,7 @@ class LoginHandler(BaseHandler):
 class LogoutHandler(BaseHandler):
     def get(self):
         if(self.get_argument("action", None)):
-            self.set_secure_cookie("user", "");
-            self.redirect("/")
-        else:
+            self.clear_cookie("user")
             self.redirect("/")
 
 class RegisterHandler(BaseHandler):
@@ -49,9 +48,9 @@ class RegisterHandler(BaseHandler):
 
 class IndexHandler(BaseHandler):
     def get(self):
-        sql = "select * from article order by id desc limit 5;"
+        sql = "select * from post order by id desc limit 10;"
         ret = self.db.query(sql)
-        self.render("index.html", article=ret)
+        self.render("index.html", posts=ret)
 
 class EditHandler(BaseHandler):
     @tornado.web.authenticated
@@ -59,70 +58,67 @@ class EditHandler(BaseHandler):
         self.render(
                 "edit.html",
                 info="",
-                draft_title="",
-                draft_text="",
                 )
 
-class UploadHandler(BaseHandler):
     def post(self):
-        try:
-            get_title = self.get_argument("edit_title")
-            get_text = self.get_argument("edit_text")
-            get_code = self.get_argument("invite_code")
-            if(get_code == "CA45TZ"):
-                if(get_title == "" or get_text == ""):
-                    self.render("edit.html",
-                        info="邀请码正确，标题和内容都为必填项",
-                        draft_title = get_title,
-                        draft_text = get_text)
-                else:
-                    #self.db.execute()
-                    sql = 'insert into article(title, text, author, tag_main, \
-                    tag_sub, post_date, post_time) values(%s, %s, %s, "微信", "normal", CURRENT_DATE, CURRENT_TIME);'
-                    self.db.execute(sql, get_title, get_text, "wujian")
-                    self.render("edit.html",
-                        info="邀请码正确，两种内容都已提交",
-                        draft_title = get_title,
-                        draft_text = get_text
-                        )
-            else:
-                self.render(
-                        "edit.html",
-                        info="邀请码错误",
-                        draft_title = get_title,
-                        draft_text = get_text
-                        )
-        except ValueError:
-            print ValueError
+        title = self.get_argument("title")
+        author = self.current_user.decode("utf-8");
+        text = self.get_argument("text")
+        tag = self.get_argument("tag")
+        fields = "title, author, text, posttime, tag"
+        values = "'%s','%s','%s',CURTIME(),'%s'" % (title,author,text,tag)
+        sql = "insert into post(%s) values(%s);" % (fields,values)
+        ret = self.db.execute(sql)
+        if ret:
+            self.redirect("/")
+        else:#TODO
+            self.redirect("/")
 
 class ReadHandler(BaseHandler):
     def get(self,):
-        id = self.get_argument("id", 1)
-        sql = "select * from article where id="+str(id)
+        id = self.get_argument("id", 1000)
+        sql = "select * from post where id="+str(id)
         ret = self.db.query(sql)
+        error_ret = {
+                "title":"文章未找到",
+                "posttime":"",
+                "author":"",
+                "text":"<p>请检查网址是否有误</p><p>或者尝试搜索</p>",
+                "tag":""
+                }
         if(ret):
-            ret_title = ret[0]["title"]
-            ret_text = ret[0]["text"]
-            ret_time = ret[0]["post_date"]
+            self.render("read.html", arg = ret[0])
         else:
-            ret_title = "文章未找到"
-            ret_text = "<p>请检查网址是否有误</p><a href='/'>去往首页</a>"
-            ret_time = "如有问题请反馈给我们"
-        self.render(
-                "read.html",
-                title = ret_title,
-                time = ret_time,
-                text = ret_text,
-                )
+            self.render("read.html",arg = error_ret)
 
 class HelpHandler(BaseHandler):
     def get(self,):
-        bing_json = ("http://cn.bing.com/HPImageArchive.aspx?"
-                "format=js&idx=0&n=1&nc=1444634662901&pid=hp")
-        print bing_json
-        result = requests.get(bing_json).text
-        result_dict = json.loads(result)
-        image_url = result_dict.get("images")[0].get("url")
-        image_copyright = result_dict.get("images")[0].get("copyright")
-        page_words = "<img src='%s'>" % (image_url) + image_copyright
-        self.render("help.html", arg = page_words)
+        self.render("help.html")
+
+class AccountHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self,):
+        sql = "select * from user where username='"+str(self.current_user)+"'"
+        ret = self.db.query(sql)
+        if(ret):
+            self.render("account.html", arg = ret[0])
+
+
+class SearchHandler(BaseHandler):
+    def get(self,):
+        self.render("search.html")
+
+    def post(self,):
+        time_start = time.time()
+        kw = self.get_argument("q")
+        sql = "select * from post where title like '%%"+kw+"%%'"
+        sql += "or text like'%%" +kw+ "%%'"
+        ret = self.db.query(sql)
+        time_end = time.time()
+        time_spend = time_end - time_start
+        if ret:
+            self.render("result.html",arg=ret, time = time_spend)
+        else:
+            ret = False
+            self.render("result.html",arg=ret, time = time_spend)
+

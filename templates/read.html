@@ -3,12 +3,16 @@
 {% block body %}
 
     <article>
-      <h1>{{ title }}</h1>
-      <h4>{{ time }}</h4>
-      <div>{% raw text %}</div>
+      <div class="card"><h1>{{ arg["title"] }}</h1></div>
+      <div class="card">
+          <p>作者：{{ arg["author"] }}</p>
+          <p>时间：{{ arg["posttime"] }}</p>
+          <p>标签：{{ arg["tag"] }}</p>
+      </div>
+      <div class="card"><div>{% raw arg["text"] %}</div></div>
     </aticle>
     <div id="share-wx">
-      <p>如果觉得有用，不妨分享给大家吧。😁</p>
+      <p>如果觉得有用，不妨分享给大家吧。</p>
       <p><a id="share-wx-button" onclick="openShareTip()">分享到朋友圈</a></p>
     </div>
     <div id="share-tip" onclick="closeShareTip()">
