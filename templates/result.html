@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+  搜索结果：
+  <p>
+    {% if arg %}
+      {% for i in range(len(arg)) %}
+        <div class="card">
+          <h3><a href="/read?id={{ arg[i]['id'] }}">{{ arg[i]["title"] }}</a></h3>
+          <div>分类：{{ arg[i]['tag'] }}</div>
+        </div>
+      {% end %}
+      共{{ len(arg) }}条结果。
+    {% else %}
+    没有找到相关的文章。
+    {% end %}
+    用时{{ round(time,4) }}秒。
+  </p>
+  再次搜索：
+  <p>
+    <form action="/search" method="post">
+      {% raw xsrf_form_html() %}
+      <input type="text" name="q" placeholder="请输入关键字" required>
+      <input type="submit">
+    </form>
+  </p>
+
+{% end %}

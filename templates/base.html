@@ -4,32 +4,29 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#0f9d58">
   <link rel="shortcut icon" href="{{ static_url("favicon.png") }}" type="image/png" />
   <link rel="icon" href="{{ static_url("favicon.png") }}" type="image/png" />
-  <link rel="stylesheet" type="text/css" href="{{ static_url("css/style.css") }}" />
+  <link rel="stylesheet" type="text/css" href="{{ static_url("css/style.css") }}"/>
   <title>{% block title %}淡竹园{% end %}</title>
   {% block head %}{% end %}
 </head>
-<body id="top">
+<body>
   <header>
     <div class="view">
-      <div class="top-bar">
-        <div class="logo">
-          <a href="/">淡竹园</a>
-        </div>
-        <div class="user-panel">
-          {% if current_user %}
-            {{ current_user }} | <a href="/logout?action=1">退出帐号</a>
-          {% else %}
-            <a href="/login">登录</a> ｜
-            <!-- <a href="/reg">注册</a> -->
-          {% end %}
-        </div>
-      </div>
-      <nav class="navigation">
-        <a class="" href="/">首页</a>
-        <a class="" href="#">目录</a>
-        <a class="" href="/edit">投稿</a>
+      <h1>淡竹园</h1>
+      <nav>
+        <a href="/">首页</a>
+        <a href="/search">搜索</a>
+        <a href="/edit">投稿</a>
+        |
+        {% if current_user %}
+          <a href="/account">{{ current_user }}</a>
+          <a href="/logout?action=1">退出</a>
+        {% else %}
+          <a href="/login">登录</a>
+          <!-- <a href="/reg">注册</a> -->
+        {% end %}
       </nav>
     </div>
   </header>
@@ -40,7 +37,9 @@
   </main>
   <footer>
     <div class="view">
-      <a href="#top">返回顶部</a>
+      <p>
+        <a href="javascript:scroll(0,0)">返回顶部</a>
+      </P>
       <p>
         淡竹园 DanZhuYuan ♥
       </p>

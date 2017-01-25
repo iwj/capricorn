@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+  <div class="card">
+    <p>搜索</p>
+    <form action="/search" method="post">
+      {% raw xsrf_form_html() %}
+      <p><input type="text" name="q" placeholder="请输入关键字" required></p>
+      <p><input type="submit"></p>
+    </form>
+  </div>
+
+{% end %}

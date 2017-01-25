@@ -7,11 +7,11 @@
 
 ## 2016-4-2
 
-- [ ] HTML的缩进规范是怎样的
-- [ ] textarea 的固定 width
-- [ ] 站点顶部Logo Link的css样式
-- [ ] Add Navi area
-- [ ] Python的列表是否能直接存入MySQL（str 和 unicode 的问题）
+- [x] HTML的缩进规范是怎样的 解决：选择2字符的方案
+- [x] textarea 的固定 width
+- [x] 站点顶部Logo Link的css样式
+- [x] Add Navi area
+- [x] Python的列表是否能直接存入MySQL（str 和 unicode 的问题） 解决：单个tag
 
 ## 2016-4-13
 
@@ -23,4 +23,11 @@
 
 ## 2016-4-17
 
-- [x] M有SQL查询最近的记录
+- [x] MySQL查询最近的记录
+
+## 2017-01-03
+
+- [ ] 安全问题：MySQL换掉root用户
+- [ ] 注册页面的图形验证码
+- [ ] 注册页面验证该邮箱是否已注册，若是，则提示是否忘记密码
+- [ ] 自动保存草稿

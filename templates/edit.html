@@ -5,29 +5,30 @@
 {% end %}
 
 {% block body %}
-
+<div class="card">
     <h1>稿子编辑</h1>
     <p>{{ info }}</p>
-    <form action="/upload" method="post">
+    <form action="/edit" method="post">
+      {% raw xsrf_form_html() %}
       <div>
         <p>
           <h2>标题</h2>
-          <input name="edit_title" type="text" id="title" required>
+          <input name="title" type="text" required>
         </p>
-        <textarea id="textarea" name="edit_text" style="height:600px;">{{ draft_text }}<p>请输入内容...</p></textarea>
+        <textarea id="textarea" name="text" style="height:600px;"><p>请输入内容...</p></textarea>
       </div>
       <div>
         <p>
-          <h2>邀请码</h2>
-          <input type="text" id="invite_code" name="invite_code" required>
+          为这篇文章选一个合适的标签：
+          <input type="radio" name="tag" value="微信" required>微信
+          <input type="radio" name="tag" value="支付宝">支付宝
+        </p>
+        <p>
+          <input type="submit">
         </p>
       </div>
-      <div class="mdl-cell mdl-cell--12-col">
-      <button type="submit">
-        投稿
-      </button>
-    </div>
     </form>
+  </div>
 <script type="text/javascript" src="../static/editor/js/lib/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="../static/editor/js/wangEditor.js"></script>
   <script type="text/javascript">
