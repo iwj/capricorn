@@ -3,7 +3,10 @@
 {% block body %}
 
 <div class="card">
-  <h2>登录</h2>
+  <h2>
+    登录
+    <small>{{ info }}</small>
+  </h2>
   <p>
     <form method="post" action="">
       {% raw xsrf_form_html() %}
@@ -17,7 +20,6 @@
           <input type="submit" value="登录">
         </p>
     </form>
-    <p>{{ info }}</p>
   </p>
 </div>
 {% end %}

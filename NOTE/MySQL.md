@@ -29,7 +29,7 @@ ID
 投递表：
 create table post(
 id int not NULL auto_increment,
-title varchar(16) not NULL,
+title varchar(32) not NULL,
 author varchar(16) not NULL,
 text text not NULL,
 posttime datetime not NULL,

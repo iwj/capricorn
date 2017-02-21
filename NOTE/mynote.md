@@ -196,3 +196,14 @@ mysql> select * from article;
 |  1 | It is a title | lalala | 2016-09-15 | 16:06:21  | WuJian | 微信     | normal  |
 +----+---------------+--------+------------+-----------+--------+----------+---------+
 1 row in set (0.00 sec)
+
+
+## 2017-02-20 run on Ubuntu 16.04
+
+1. install tornado and torndb
+2. install mysql
+http://www.dengzhr.com/node-js/866
+3. install python-mysqldb
+thanks! https://stackoverflow.com/questions/454854/no-module-named-mysqldb
+
+run it.

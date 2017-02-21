@@ -62,11 +62,11 @@ class EditHandler(BaseHandler):
 
     def post(self):
         title = self.get_argument("title")
-        author = self.current_user.decode("utf-8");
+        author = self.current_user.decode("utf-8")
         text = self.get_argument("text")
         tag = self.get_argument("tag")
         fields = "title, author, text, posttime, tag"
-        values = "'%s','%s','%s',CURTIME(),'%s'" % (title,author,text,tag)
+        values = "'%s','%s','%s',CURTIME(),'%s'" % (title ,author,'text','tag')
         sql = "insert into post(%s) values(%s);" % (fields,values)
         ret = self.db.execute(sql)
         if ret:
