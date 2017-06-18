@@ -7,36 +7,63 @@
   <meta name="theme-color" content="#0f9d58">
   <link rel="shortcut icon" href="{{ static_url("favicon.png") }}" type="image/png" />
   <link rel="icon" href="{{ static_url("favicon.png") }}" type="image/png" />
+  <link rel="stylesheet" type="text/css" href="{{ static_url("css/bootstrap.min.css") }}"/>
   <link rel="stylesheet" type="text/css" href="{{ static_url("css/style.css") }}"/>
   <title>{% block title %}淡竹园{% end %}</title>
   {% block head %}{% end %}
 </head>
 <body>
-  <header>
-    <div class="view">
-      <h1>淡竹园</h1>
-      <nav>
-        <a href="/">首页</a>
-        <a href="/search">搜索</a>
-        <a href="/edit">投稿</a>
-        |
-        {% if current_user %}
-          <a href="/account">{{ current_user }}</a>
-          <a href="/logout?action=1">退出</a>
-        {% else %}
-          <a href="/login">登录</a>
-          <!-- <a href="/reg">注册</a> -->
-        {% end %}
-      </nav>
-    </div>
-  </header>
-  <main>
-    <div class="view">
-      {% block body %}{% end %}
-    </div>
-  </main>
-  <footer>
-    <div class="view">
+  <nav class="navbar navbar-default navbar-fixed-top navbar-wj">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">DZY</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/">首页</a></li>
+          <li><a href="/search">搜索</a></li>
+          <li><a href="/edit">投稿</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {% if current_user %}
+            <li><a href="/account"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ current_user }}</a></li>
+            <li><a href="/logout?action=1"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> 退出</a></li>
+          </li>
+          {% else %}
+            <li><a href="/login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
+            <!-- <a href="/reg">注册</a> -->
+          {% end %}
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- container -->
+  </nav>
+
+  {% block body %}{% end %}
+
+  <hr>
+  <footer class="container">
+    <nav>
+      <a href="/">首页</a>
+      <a href="/search">搜索</a>
+      <a href="/edit">投稿</a>
+      |
+      {% if current_user %}
+      <a href="/account">{{ current_user }}</a>
+      <a href="/logout?action=1">退出</a>
+      {% else %}
+        <a href="/login">登录</a>
+        <!-- <a href="/reg">注册</a> -->
+      {% end %}
+    </nav>
+    <div>
       <p>
         <a href="javascript:scroll(0,0)">返回顶部</a>
       </P>
@@ -45,5 +72,7 @@
       </p>
     </div>
   </footer>
+  <script src="{{ static_url("js/jquery.min.js") }}" ></script>
+  <script src="{{ static_url("js/bootstrap.min.js") }}" ></script>
 </body>
 </html>

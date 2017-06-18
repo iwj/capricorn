@@ -17,7 +17,7 @@ from handlers import HANDLERS
 define("mysql_host", default="127.0.0.1:3306")
 define("mysql_database", default="test2")
 define("mysql_user", default="root")
-define("mysql_password", default="")
+define("mysql_password", default="q12345")
 
 if __name__ == "__main__":
     tornado.options.parse_command_line()

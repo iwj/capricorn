@@ -2,8 +2,10 @@
 
 {% block body %}
 
-  <div class="card">
-    <h2>帐号信息</h2>
+  <div class="container">
+    <div class="page-header">
+      <h1>用户中心</h1>
+    </div>
     <p>用户名：{{ arg["username"] }}</p>
     <p>邮箱：{{ arg["email"] }}</p>
     <p>注册时间：{{ arg["regtime"] }}</p>

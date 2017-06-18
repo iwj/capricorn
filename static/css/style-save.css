@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+/* basic */
+
+body {
+  background-color: #f2f2f2;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+  font-size: 1em;
+  line-height: 1.75;
+  margin: 0px;
+  padding: 0px;
+  word-break: break-word; /* 长单词自动换行 */
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0px;
+}
+
+a {
+  color: #4285f4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+img {
+    max-width: 100%;
+    vertical-align: bottom; /* 消除图像底部的空白，也可用作图文混排 */
+}
+
+.view {
+  width: 1000px;
+  margin: auto;
+}
+
+header {
+  background-color: #e3ebec;
+  overflow: auto;
+  -webkit-box-shadow: 0 1px 8px rgba(0,0,0,.3);
+  box-shadow: 0 1px 8px rgba(0,0,0,.3);
+  margin-bottom: 20px; /*bug临时解决方案：ie padding 失效*/
+}
+
+nav {
+  font-size: 1em;
+  line-height: 3em;
+}
+
+main {
+  margin-top: 20px; /*bug临时解决方案：ie padding 失效*/
+  padding-top: 20px;
+  padding-bottom: 20px;
+  overflow: auto;
+}
+
+footer {
+  background-color: #b6b6b6;
+  overflow: auto;
+}
+
+.card {
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border-radius: 2px;
+  border-bottom: 1px hidden #fff;
+  margin-bottom: 20px;
+}
+
+article {
+  width: 600px;
+}
+
+/* read: share WX */
+#share-wx {
+  display: none;
+  border-top: 1px dotted #333;
+}
+
+#share-wx-button {
+  color: #FFF;
+  border: 2px solid #4caf50;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: block;
+  background: #1aad19;
+  text-align: center;
+  text-decoration: none;
+}
+#share-wx-button:active {
+  color: #a2d7a2;
+  border: 2px solid #179b16;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: block;
+  background: #179b16;
+  text-align: center;
+  text-decoration: none;
+}
+
+#share-tip{
+  position: fixed;
+  display:none;
+  right: 0px;
+  top: 0px;
+  padding: 10px 40px;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  text-align: right;
+  background: rgba(51, 51, 51, 0.8);
+}
+
+/* Mobile Device */
+
+@media screen and (max-width: 1000px) {
+  .view {
+    width: 90%;
+  }
+
+  article {
+    width: 100%;
+  }
+}

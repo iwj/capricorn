@@ -3,7 +3,7 @@
 {% block body %}
 
   <h2>注册帐号</h2>
-  <div class="register-frame">
+  <div>
     <form method="post">
       {% raw xsrf_form_html() %}
       <p><input type="text" disabled="disabled" name="email" placeholder="邮箱" required></p>

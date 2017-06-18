@@ -1,0 +1,6 @@
+sudo pip install tornado
+sudo pip install torndb
+sudo pip install bs4
+sudo pip install requests
+sudo apt install mysql-server
+sudo apt install python-mysqldb

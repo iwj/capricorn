@@ -1,12 +1,58 @@
 {% extends "base.html" %}
 
 {% block body %}
-  最新文章
-    {% for i in range(len(posts)) %}
-      <div class="card">
+
+  <div class="jumbotron bing-bg">
+    <div class="container">
+      <h1>淡竹谣，<br>发现互联网美学。</h1>
+      <p>简单、易懂的文字</p>
+      <p>实用的</p>
+      <p>惊奇的</p>
+      <p>有趣的</p>
+      <p><a class="btn btn-success btn-lg" href="#" role="button">了解更多</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>编辑精选</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-4">.col-md-4<br><br><br><br><br><br><br><br><br></div>
+      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4">.col-md-4</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>最新文章</h1>
+    <div class="row">
+      {% for i in range(len(posts)) %}
+      <div class="col-md-4">.col-md-4
         <h3><a href="/read?id={{ posts[i]['id'] }}">{{ posts[i]["title"] }}</a></h3>
         <div>分类：{{ posts[i]['tag'] }}</div>
       </div>
-    {% end for%}
+      {% end for%}
+    </div>
+  </div>
+
+
+
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Panel heading without title</div>
+    <div class="panel-body">
+      Panel content
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Panel title 1</h3>
+    </div>
+    <div class="panel-body">
+      Panel content
+    </div>
+  </div>
+</div>
 
 {% end %}

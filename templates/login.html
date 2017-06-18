@@ -2,24 +2,24 @@
 
 {% block body %}
 
-<div class="card">
-  <h2>
-    登录
-    <small>{{ info }}</small>
-  </h2>
-  <p>
-    <form method="post" action="">
-      {% raw xsrf_form_html() %}
-        <p>
-          <input type="text" name="username" placeholder="帐号" required></input>
-        </p>
-        <p>
-          <input type="password" name="password" placeholder="密码" required></input>
-        </p>
-        <p>
-          <input type="submit" value="登录">
-        </p>
-    </form>
-  </p>
-</div>
+  <div class="container">
+    <h2>
+      登录
+      <small>{{ info }}</small>
+    </h2>
+    <p>
+      <form method="post" action="">
+        {% raw xsrf_form_html() %}
+          <p>
+            <input type="text" name="username" placeholder="帐号" required></input>
+          </p>
+          <p>
+            <input type="password" name="password" placeholder="密码" required></input>
+          </p>
+          <p>
+            <input type="submit" value="登录">
+          </p>
+        </form>
+      </p>
+    </div>
 {% end %}

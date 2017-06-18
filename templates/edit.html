@@ -5,7 +5,7 @@
 {% end %}
 
 {% block body %}
-<div class="card">
+<div class="container">
     <h1>稿子编辑</h1>
     <p>{{ info }}</p>
     <form action="/edit" method="post">
@@ -29,7 +29,7 @@
       </div>
     </form>
   </div>
-<script type="text/javascript" src="../static/editor/js/lib/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="../static/editor/js/lib/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="../static/editor/js/wangEditor.js"></script>
   <script type="text/javascript">
   var editor = new wangEditor('textarea');

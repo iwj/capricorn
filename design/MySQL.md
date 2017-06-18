@@ -16,6 +16,7 @@ alter table user auto_increment=1000;
 insert into user(username, password, email, regtime) values("wujian", "abc123", "wujian@github.com", curtime());
 
 
+
 # 2017-01-03 星期二
 摘要：为第一版做最后的优化。
 
